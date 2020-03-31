@@ -13,7 +13,23 @@
 		25AB9B7C2432BC5800AD83F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7A2432BC5800AD83F6 /* Main.storyboard */; };
 		25AB9B7E2432BC5A00AD83F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7D2432BC5A00AD83F6 /* Assets.xcassets */; };
 		25AB9B812432BC5A00AD83F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7F2432BC5A00AD83F6 /* LaunchScreen.storyboard */; };
+		25AB9B952432CBF400AD83F6 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */; };
+		25AB9B962432CBF400AD83F6 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		25AB9B972432CBF400AD83F6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25AB9B962432CBF400AD83F6 /* SpotifyiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		25AB9B712432BC5800AD83F6 /* OurQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,8 @@
 		25AB9B7D2432BC5A00AD83F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25AB9B802432BC5A00AD83F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25AB9B822432BC5A00AD83F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25AB9B8F2432C47200AD83F6 /* OurQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OurQueue-Bridging-Header.h"; sourceTree = "<group>"; };
+		25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25AB9B952432CBF400AD83F6 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +61,7 @@
 			children = (
 				25AB9B732432BC5800AD83F6 /* OurQueue */,
 				25AB9B722432BC5800AD83F6 /* Products */,
+				25AB9B882432BDC700AD83F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +76,7 @@
 		25AB9B732432BC5800AD83F6 /* OurQueue */ = {
 			isa = PBXGroup;
 			children = (
+				25AB9B8F2432C47200AD83F6 /* OurQueue-Bridging-Header.h */,
 				25AB9B742432BC5800AD83F6 /* AppDelegate.swift */,
 				25AB9B762432BC5800AD83F6 /* SceneDelegate.swift */,
 				25AB9B782432BC5800AD83F6 /* ViewController.swift */,
@@ -65,6 +86,14 @@
 				25AB9B822432BC5A00AD83F6 /* Info.plist */,
 			);
 			path = OurQueue;
+			sourceTree = "<group>";
+		};
+		25AB9B882432BDC700AD83F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +106,7 @@
 				25AB9B6D2432BC5800AD83F6 /* Sources */,
 				25AB9B6E2432BC5800AD83F6 /* Frameworks */,
 				25AB9B6F2432BC5800AD83F6 /* Resources */,
+				25AB9B972432CBF400AD83F6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,13 +316,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9XJ7E5RHQ9;
+				FRAMEWORK_SEARCH_PATHS = "/Users/bdemilt/Downloads/ios-sdk-master\\ 2/";
 				INFOPLIST_FILE = OurQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = bdemilt.OurQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OurQueue/OurQueue-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,13 +339,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9XJ7E5RHQ9;
+				FRAMEWORK_SEARCH_PATHS = "/Users/bdemilt/Downloads/ios-sdk-master\\ 2/";
 				INFOPLIST_FILE = OurQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = bdemilt.OurQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OurQueue/OurQueue-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
