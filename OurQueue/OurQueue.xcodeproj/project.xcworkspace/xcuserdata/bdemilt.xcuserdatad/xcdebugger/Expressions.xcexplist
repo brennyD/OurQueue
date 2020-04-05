@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #1 in SpotifyModel.manager.getter:SpotifyModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "(SPTSessionManager?)self.$__lazy_storage_$_model.some.$__lazy_storage_$_manager">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.pressed(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SpotifyModel.beginSession():SpotifyModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in SpotifyModel.configuration.getter:SpotifyModel.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

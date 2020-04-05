@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - AlamoRecord (1.2.2):
+    - AlamofireObjectMapper (~> 5.1)
+  - ObjectMapper (3.5.2)
+  - Spartan (1.2.1):
+    - AlamoRecord (~> 1.2.0)
+
+DEPENDENCIES:
+  - Spartan
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - AlamoRecord
+    - ObjectMapper
+    - Spartan
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  AlamoRecord: 5850c563a811fdca40cd361b1b27622004bccef3
+  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
+  Spartan: 2fb99ad25f2b0e8182799f251c800091977f0a40
+
+PODFILE CHECKSUM: db7f0e4f6a78ded175745fba90fbb19e498dccb2
+
+COCOAPODS: 1.9.1
