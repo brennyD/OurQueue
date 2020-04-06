@@ -15,28 +15,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ida-83-YYQ">
-                                <rect key="frame" x="133" y="304" width="150" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Debug Button"/>
-                                <connections>
-                                    <action selector="pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKU-FH-Sfi"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Big ass Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZh-5W-Gcr">
-                                <rect key="frame" x="31" y="399" width="363" height="360"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2M-Zg-6QH" customClass="StartView" customModule="OurQueue" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="103" width="414" height="759"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OurQueue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-fJ-WYF">
+                                        <rect key="frame" x="89" y="26" width="236" height="63"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="48"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="powered by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sc-b2-krK">
+                                        <rect key="frame" x="160.5" y="97" width="93" height="23"/>
+                                        <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Spotify_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="qZr-xU-Vm7">
+                                        <rect key="frame" x="124.5" y="144" width="165" height="48"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASd-JO-tI6">
+                                        <rect key="frame" x="98.5" y="301" width="217" height="40"/>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.72549019607843135" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="21"/>
+                                        <state key="normal" title="Connect">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="authPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nZ9-QV-fGX"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to your SpotifyTM account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwR-HM-Ii4">
+                                        <rect key="frame" x="73" y="270" width="272" height="23"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj7-V5-GFN">
+                                        <rect key="frame" x="140" y="456" width="139" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="47"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qZr-xU-Vm7" firstAttribute="height" secondItem="U2M-Zg-6QH" secondAttribute="height" multiplier="0.0632411" id="2KB-b4-qod"/>
+                                    <constraint firstItem="xOP-fJ-WYF" firstAttribute="top" secondItem="U2M-Zg-6QH" secondAttribute="top" constant="26" id="7vq-ro-5Hc"/>
+                                    <constraint firstItem="xOP-fJ-WYF" firstAttribute="centerX" secondItem="U2M-Zg-6QH" secondAttribute="centerX" id="9gn-Ky-YbW"/>
+                                    <constraint firstItem="ASd-JO-tI6" firstAttribute="height" secondItem="U2M-Zg-6QH" secondAttribute="height" multiplier="0.0527009" id="PA5-Ah-YGt"/>
+                                    <constraint firstItem="8sc-b2-krK" firstAttribute="top" secondItem="U2M-Zg-6QH" secondAttribute="top" constant="97" id="QhF-sY-L5B"/>
+                                    <constraint firstItem="qZr-xU-Vm7" firstAttribute="width" secondItem="U2M-Zg-6QH" secondAttribute="width" multiplier="0.398551" id="ZRL-Zh-Gr7"/>
+                                    <constraint firstItem="8sc-b2-krK" firstAttribute="centerX" secondItem="U2M-Zg-6QH" secondAttribute="centerX" id="ag4-Pa-500"/>
+                                    <constraint firstItem="ASd-JO-tI6" firstAttribute="width" secondItem="U2M-Zg-6QH" secondAttribute="width" multiplier="0.524155" id="bU5-EO-Wm8"/>
+                                    <constraint firstItem="qZr-xU-Vm7" firstAttribute="top" secondItem="U2M-Zg-6QH" secondAttribute="top" constant="144" id="bv8-5p-aB9"/>
+                                    <constraint firstItem="qwR-HM-Ii4" firstAttribute="top" secondItem="U2M-Zg-6QH" secondAttribute="top" constant="270" id="dNS-Jf-el3"/>
+                                    <constraint firstItem="ASd-JO-tI6" firstAttribute="centerX" secondItem="U2M-Zg-6QH" secondAttribute="centerX" id="fR7-Pb-arL"/>
+                                    <constraint firstItem="ASd-JO-tI6" firstAttribute="top" secondItem="U2M-Zg-6QH" secondAttribute="top" constant="301" id="ggj-Ih-Hd7"/>
+                                    <constraint firstItem="qZr-xU-Vm7" firstAttribute="centerX" secondItem="U2M-Zg-6QH" secondAttribute="centerX" id="hVn-2H-Qgt"/>
+                                    <constraint firstItem="qwR-HM-Ii4" firstAttribute="centerX" secondItem="U2M-Zg-6QH" secondAttribute="centerX" constant="2" id="kLk-wI-RLP"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U2M-Zg-6QH" secondAttribute="trailing" id="L1m-H5-IEK"/>
+                            <constraint firstItem="U2M-Zg-6QH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="59" id="QfP-7X-f29"/>
+                            <constraint firstItem="U2M-Zg-6QH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RKb-kD-0LW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U2M-Zg-6QH" secondAttribute="bottom" id="SlQ-Rz-7YD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="debuglabel" destination="YZh-5W-Gcr" id="F11-mQ-pke"/>
+                        <outlet property="authButton" destination="ASd-JO-tI6" id="Lka-ZW-Vzq"/>
+                        <outlet property="connectLabel" destination="qwR-HM-Ii4" id="QqS-PO-feJ"/>
+                        <outlet property="logo" destination="qZr-xU-Vm7" id="N3N-0q-ero"/>
+                        <outlet property="mainTitle" destination="xOP-fJ-WYF" id="jBI-VL-K8m"/>
+                        <outlet property="start" destination="U2M-Zg-6QH" id="2JM-BB-q4O"/>
+                        <outlet property="subtitle" destination="8sc-b2-krK" id="cpW-XF-PLi"/>
+                        <outlet property="yey" destination="Sj7-V5-GFN" id="99v-9C-Qa3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -44,4 +101,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="65.625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Spotify_Logo" width="2362" height="709"/>
+    </resources>
 </document>

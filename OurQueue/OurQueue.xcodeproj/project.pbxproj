@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		251E8BA02436FB4E00A7AEDB /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		2535839B243ACDD300014BE5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535839A243ACDD300014BE5 /* StartView.swift */; };
 		257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257332DC243879C100FDA145 /* SceneDelegate.swift */; };
-		257332E02439717100FDA145 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 257332DF2439717100FDA145 /* SwiftPackageProductDependency */; };
+		257332E02439717100FDA145 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 257332DF2439717100FDA145 /* KeychainSwift */; };
+		25784537243AF43C00F29B52 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25784535243AF43500F29B52 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B742432BC5800AD83F6 /* AppDelegate.swift */; };
 		25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B782432BC5800AD83F6 /* ViewController.swift */; };
 		25AB9B7C2432BC5800AD83F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7A2432BC5800AD83F6 /* Main.storyboard */; };
@@ -21,7 +22,9 @@
 
 /* Begin PBXFileReference section */
 		13DD8A7DBD69FD633758D978 /* Pods-OurQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurQueue.debug.xcconfig"; path = "Target Support Files/Pods-OurQueue/Pods-OurQueue.debug.xcconfig"; sourceTree = "<group>"; };
+		2535839A243ACDD300014BE5 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		257332DC243879C100FDA145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		25784535243AF43500F29B52 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		25AB9B712432BC5800AD83F6 /* OurQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AB9B742432BC5800AD83F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25AB9B782432BC5800AD83F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +33,6 @@
 		25AB9B802432BC5A00AD83F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25AB9B822432BC5A00AD83F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AB9B8F2432C47200AD83F6 /* OurQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OurQueue-Bridging-Header.h"; sourceTree = "<group>"; };
-		25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		25AB9B9A2432FD7800AD83F6 /* SpotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyModel.swift; sourceTree = "<group>"; };
 		872CFC9BA33F75B082B4236D /* libPods-OurQueue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OurQueue.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A12DDE91DB2F2C25EF3FCD /* Pods-OurQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurQueue.release.xcconfig"; path = "Target Support Files/Pods-OurQueue/Pods-OurQueue.release.xcconfig"; sourceTree = "<group>"; };
@@ -41,8 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				257332E02439717100FDA145 /* BuildFile in Frameworks */,
-				251E8BA02436FB4E00A7AEDB /* SpotifyiOS.framework in Frameworks */,
+				257332E02439717100FDA145 /* KeychainSwift in Frameworks */,
+				25784537243AF43C00F29B52 /* SpotifyiOS.framework in Frameworks */,
 				79C4921B21EE8485B4D2E4EF /* libPods-OurQueue.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +82,7 @@
 				25AB9B7D2432BC5A00AD83F6 /* Assets.xcassets */,
 				25AB9B7F2432BC5A00AD83F6 /* LaunchScreen.storyboard */,
 				25AB9B822432BC5A00AD83F6 /* Info.plist */,
+				2535839A243ACDD300014BE5 /* StartView.swift */,
 			);
 			path = OurQueue;
 			sourceTree = "<group>";
@@ -87,7 +90,7 @@
 		25AB9B882432BDC700AD83F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				25AB9B942432CBF400AD83F6 /* SpotifyiOS.framework */,
+				25784535243AF43500F29B52 /* SpotifyiOS.framework */,
 				872CFC9BA33F75B082B4236D /* libPods-OurQueue.a */,
 			);
 			name = Frameworks;
@@ -120,7 +123,7 @@
 			);
 			name = OurQueue;
 			packageProductDependencies = (
-				257332DF2439717100FDA145 /* SwiftPackageProductDependency */,
+				257332DF2439717100FDA145 /* KeychainSwift */,
 			);
 			productName = OurQueue;
 			productReference = 25AB9B712432BC5800AD83F6 /* OurQueue.app */;
@@ -151,7 +154,7 @@
 			);
 			mainGroup = 25AB9B682432BC5800AD83F6;
 			packageReferences = (
-				257332DE2439717100FDA145 /* RemoteSwiftPackageReference */,
+				257332DE2439717100FDA145 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 25AB9B722432BC5800AD83F6 /* Products */;
 			projectDirPath = "";
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25AB9B9B2432FD7800AD83F6 /* SpotifyModel.swift in Sources */,
+				2535839B243ACDD300014BE5 /* StartView.swift in Sources */,
 				25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */,
 				25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */,
 				257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */,
@@ -354,8 +358,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9XJ7E5RHQ9;
+				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"/Users/bdemilt/Downloads/ios-sdk-master\\ 2/",
 					"$(inherited)",
@@ -372,6 +379,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Gizzard.OurQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OurQueue/OurQueue-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -385,12 +393,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9XJ7E5RHQ9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"/Users/bdemilt/Downloads/ios-sdk-master\\ 2/",
 					"$(inherited)",
 				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AlamoRecord/AlamoRecord.framework/Headers\"",
@@ -411,6 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Gizzard.OurQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OurQueue/OurQueue-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -442,7 +453,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		257332DE2439717100FDA145 /* RemoteSwiftPackageReference */ = {
+		257332DE2439717100FDA145 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
@@ -453,9 +464,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		257332DF2439717100FDA145 /* SwiftPackageProductDependency */ = {
+		257332DF2439717100FDA145 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 257332DE2439717100FDA145 /* RemoteSwiftPackageReference */;
+			package = 257332DE2439717100FDA145 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -13,22 +13,25 @@ import Spartan
 class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
     
     
-    let SpotifyClientID = ProcessInfo.processInfo.environment["CLIENT_ID"]!;
-    let SpotifyRedirectURL = URL(string: ProcessInfo.processInfo.environment["REDIRECT_URI"]!)!
-    let refreshKey = ProcessInfo.processInfo.environment["REFRESH_KEY"]!;
+    let SpotifyClientID = "f0ac9179e5474647a210ebf993c53306"; //ProcessInfo.processInfo.environment["CLIENT_ID"]!;
+    let SpotifyRedirectURL = URL(string:"OurQueue://spotify-login-callback");//URL(string: ProcessInfo.processInfo.environment["REDIRECT_URI"]!)!
+    let refreshKey = "com.Gizzard.refreshkey"//ProcessInfo.processInfo.environment["REFRESH_KEY"]!;
+    let refreshURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/refresh";
+    let swapURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/swap"
     let keychain = KeychainSwift();
     var expiration: Date? = nil;
     var trackPaging: PagingObject<Track>? = nil;
+    var completionFunction: (()->())? = nil;
 
     lazy var configuration:SPTConfiguration = {
-        let config = SPTConfiguration(clientID: SpotifyClientID, redirectURL:SpotifyRedirectURL);
-        if let refresh = ProcessInfo.processInfo.environment["REFRESH_URL"] {
-            config.tokenRefreshURL = URL(string: refresh);
-        }
-        if let swap = ProcessInfo.processInfo.environment["SWAP_URL"] {
-            config.tokenSwapURL = URL(string: swap);
-        }
-        config.playURI = "";
+        let config = SPTConfiguration(clientID: SpotifyClientID, redirectURL:SpotifyRedirectURL!);
+       
+        config.tokenRefreshURL = URL(string: refreshURL);
+        
+        
+        config.tokenSwapURL = URL(string: swapURL);
+        
+       // config.playURI = "";
         return config;
     }();
     
@@ -45,13 +48,14 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     
     
     
-    func beginSession(){
+    func beginSession(complete:(() -> ())? = {}){
         Spartan.loggingEnabled = true;
         if let _ = keychain.get(refreshKey) {
             if(expiration == nil || expiration! < Date()){
                 refreshSession();
             }
         } else {
+            completionFunction = complete;
             if #available(iOS 11, *) {
                 // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
                 spotManager.initiateSession(with: scope, options: .clientOnly);
@@ -72,7 +76,9 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         Spartan.search(query: search, type: .track, success: good, failure: {error in print(error)});
     }
 
-    
+    func needsAppAuthorization() -> Bool{
+        return keychain.get(refreshKey) == nil;
+    }
     
     private func parseURI(_ uri: String) -> String {
         return "I gotta do this!";
@@ -86,40 +92,33 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     }
     
     private func refreshSession(){
-        if let refresh = ProcessInfo.processInfo.environment["REFRESH_URL"] {
-            let url = URL(string: refresh)!;
-            var request = URLRequest(url: url);
-            request.httpMethod = "POST";
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            let json:[String: Any] = ["refresh_token": keychain.get(refreshKey)!];
-            let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
-            request.httpBody = jsonData;
-            
-            let semaphore = DispatchSemaphore(value: 0);
-            
-            let task = URLSession.shared.dataTask(with: request) {
-                data, response, error in
-                guard let data = data, error == nil else {
-                    print("URL Call failed with \(error?.localizedDescription ?? "No data")");
-                    semaphore.signal();
-                    return;
-                }
-                let body = try? JSONSerialization.jsonObject(with: data, options: []);
-                if let response = body as? [String: Any] {
-                    Spartan.authorizationToken = response["access_token"] as? String;
-                    self.expiration = Date(timeInterval: TimeInterval(response["expires_in"] as! Int), since: Date());
-                }
+        let refresh = refreshURL;
+        let url = URL(string: refresh)!;
+        var request = URLRequest(url: url);
+        request.httpMethod = "POST";
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json:[String: Any] = ["refresh_token": keychain.get(refreshKey)!];
+        let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
+        request.httpBody = jsonData;
+        
+        let semaphore = DispatchSemaphore(value: 0);
+        
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, error in
+            guard let data = data, error == nil else {
+                print("URL Call failed with \(error?.localizedDescription ?? "No data")");
                 semaphore.signal();
+                return;
             }
-            task.resume();
-            _ = semaphore.wait(timeout: .distantFuture);
-            
+            let body = try? JSONSerialization.jsonObject(with: data, options: []);
+            if let response = body as? [String: Any] {
+                Spartan.authorizationToken = response["access_token"] as? String;
+                self.expiration = Date(timeInterval: TimeInterval(response["expires_in"] as! Int), since: Date());
+            }
+            semaphore.signal();
         }
-        
-        
-        
-        
-        
+        task.resume();
+        _ = semaphore.wait(timeout: .distantFuture);
     }
     
     
@@ -157,7 +156,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         print("Succesfully initiated session with Expiration \(manager.session!.expirationDate)");
         expiration = manager.session!.expirationDate;
         Spartan.authorizationToken = session.accessToken;
-        
+        completionFunction?();
         if(!keychain.set(session.refreshToken, forKey: refreshKey)){
             print("Failed to store refresh token");
         }
