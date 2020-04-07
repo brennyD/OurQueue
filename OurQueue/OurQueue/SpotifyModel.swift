@@ -21,7 +21,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     let keychain = KeychainSwift();
     var expiration: Date? = nil;
     var trackPaging: PagingObject<Track>? = nil;
-    var completionFunction: (()->())? = nil;
+    private var completionFunction: (()->())? = nil;
 
     lazy var configuration:SPTConfiguration = {
         let config = SPTConfiguration(clientID: SpotifyClientID, redirectURL:SpotifyRedirectURL!);
@@ -44,18 +44,18 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         }();
     
 
-    let scope:SPTScope = [.appRemoteControl, .streaming, .userModifyPlaybackState, .userReadRecentlyPlayed];
+    let scope:SPTScope = [.appRemoteControl, .streaming, .userModifyPlaybackState];
     
     
     
-    func beginSession(complete:(() -> ())? = {}){
+    func beginSession(complete:(() -> ())? = nil){
         Spartan.loggingEnabled = true;
+        completionFunction = complete;
         if let _ = keychain.get(refreshKey) {
             if(expiration == nil || expiration! < Date()){
-                refreshSession();
+                refreshSession(complete: completionFunction);
             }
         } else {
-            completionFunction = complete;
             if #available(iOS 11, *) {
                 // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
                 spotManager.initiateSession(with: scope, options: .clientOnly);
@@ -91,7 +91,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         }
     }
     
-    private func refreshSession(){
+    private func refreshSession(complete: (() -> ())? = nil){
         let refresh = refreshURL;
         let url = URL(string: refresh)!;
         var request = URLRequest(url: url);
@@ -101,24 +101,25 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
         request.httpBody = jsonData;
         
-        let semaphore = DispatchSemaphore(value: 0);
+        //let semaphore = DispatchSemaphore(value: 0);
         
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             guard let data = data, error == nil else {
                 print("URL Call failed with \(error?.localizedDescription ?? "No data")");
-                semaphore.signal();
+                //semaphore.signal();
                 return;
             }
             let body = try? JSONSerialization.jsonObject(with: data, options: []);
             if let response = body as? [String: Any] {
                 Spartan.authorizationToken = response["access_token"] as? String;
                 self.expiration = Date(timeInterval: TimeInterval(response["expires_in"] as! Int), since: Date());
+                complete?();
             }
-            semaphore.signal();
+            //semaphore.signal();
         }
         task.resume();
-        _ = semaphore.wait(timeout: .distantFuture);
+        //_ = semaphore.wait(timeout: .distantFuture);
     }
     
     

@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "SpotifyModel"
-            landmarkType = "3">
+            landmarkName = "sessionManager(manager:didFailWith:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "refreshSession()"
+            landmarkName = "refreshSession(complete:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -49,6 +49,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
     }
+    
+    
+    func didLogin(vc: UIViewController) {
+            let nav = UINavigationController(rootViewController: vc)
+            nav.navigationBar.isHidden = true
+            self.window?.rootViewController = nav
+        UIView.transition(with: self.window!, duration: 0.0, options: [], animations: {}, completion: nil)
+    }
+    
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.

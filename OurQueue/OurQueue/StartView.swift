@@ -48,25 +48,17 @@ class StartView: UIView{
     
     
     func colorGradientAnimation(_ item: UIButton){
-        let duration = 20.0
         let numColors = 5.0;
+        let duration = 20.0;
+        let colors = [#colorLiteral(red: 0.9725490196, green: 0.4, blue: 0.1411764706, alpha: 1),#colorLiteral(red: 0.9176470588, green: 0.2078431373, blue: 0.2745098039, alpha: 1),#colorLiteral(red: 0.9764705882, green: 0.7843137255, blue: 0.05490196078, alpha: 1),#colorLiteral(red: 0.3294117647, green: 0.7764705882, blue: 0.9215686275, alpha: 1),#colorLiteral(red: 0.1137254902, green: 0.7254901961, blue: 0.3294117647, alpha: 1)]
+        
         let step:Double = numColors/duration;
-        UIView.animateKeyframes(withDuration: duration, delay: 1.5, options: [.repeat, .allowUserInteraction], animations: {
-            UIView.addKeyframe(withRelativeStartTime: (0.0/numColors), relativeDuration: step, animations: {
-                item.backgroundColor = #colorLiteral(red: 0.8823529412, green: 0.3529411765, blue: 0.5921568627, alpha: 1);
+        UIView.animateKeyframes(withDuration: duration, delay: 1.5, options: [.repeat, .allowUserInteraction, .beginFromCurrentState], animations: {
+            for (index, color) in colors.enumerated() {
+            UIView.addKeyframe(withRelativeStartTime: Double(index)/numColors, relativeDuration: step, animations: {
+                item.backgroundColor = color;
             });
-            UIView.addKeyframe(withRelativeStartTime: (1.0/numColors), relativeDuration: step, animations: {
-                item.backgroundColor = #colorLiteral(red: 0.5254901961, green: 0.07450980392, blue: 0.5333333333, alpha: 1);
-            });
-            UIView.addKeyframe(withRelativeStartTime: (2.0/numColors), relativeDuration: step, animations: {
-                item.backgroundColor = #colorLiteral(red: 0.6, green: 0.5176470588, blue: 0.831372549, alpha: 1);
-            });
-            UIView.addKeyframe(withRelativeStartTime: (3.0/numColors), relativeDuration: step, animations: {
-                item.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.4745098039, blue: 0.5411764706, alpha: 1);
-            });
-            UIView.addKeyframe(withRelativeStartTime: (4.0/numColors), relativeDuration: step, animations: {
-                item.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.7254901961, blue: 0.3294117647, alpha: 1);
-            });
+            }
         });
         
         

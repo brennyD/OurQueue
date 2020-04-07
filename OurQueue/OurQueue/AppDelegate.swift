@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
+    func changeRootVC(){
+        
+    }
+    
 
     
     func applicationWillTerminate(_ application: UIApplication) {

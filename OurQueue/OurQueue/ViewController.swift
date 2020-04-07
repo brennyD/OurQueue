@@ -17,24 +17,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var start: StartView!
     @IBOutlet weak var authButton: UIButton!
     @IBOutlet weak var connectLabel: UILabel!
-    @IBOutlet weak var yey: UILabel!
+    @IBOutlet weak var buffering: UIActivityIndicatorView!
     
     var model = SpotifyModel();
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        model.keychain.clear();
+        //model.keychain.clear();
         start.addFadeInStep(mainTitle);
         start.addFadeInStep(subtitle);
         start.addFadeInStep(logo);
         
-        //TODO: - Conditional Rendering for these boys
         if(model.needsAppAuthorization()) {
-            yey.isHidden = true;
+        buffering.isHidden = true;
         start.colorGradientAnimation(authButton);
         authButton.contentEdgeInsets = UIEdgeInsets(top: 11.75, left: 32.0, bottom: 11.75, right:32.0);
         authButton.layer.cornerRadius = 20;
@@ -52,28 +49,36 @@ class ViewController: UIViewController {
         start.addSlideInStep(authButton);
         start.slideIn();
         } else {
-            //idk if this is the best way of doing these
             connectLabel.isHidden = true;
             authButton.isHidden = true;
-            yey.isHidden = false;
-            model.beginSession();
+            model.beginSession(complete: transitionToNext);
         }
-        
-
-        
-        
+    }
+    
+    
+    
+    func transitionToNext(){
+        DispatchQueue.main.async {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "BeginViewControl") as! BeginViewController;
+            let sd = self.view.window?.windowScene?.delegate as! SceneDelegate;
+            sd.didLogin(vc: newViewController);
+            newViewController.model = self.model;
+            
+        }
     }
     
     
     
     
+    
+    
     @IBAction func authPressed(_ sender: Any) {
+        authButton.isHidden = true;
+        connectLabel.isHidden = true;
+        buffering.isHidden = false;
         model.beginSession(complete: {
-            DispatchQueue.main.async {
-                self.connectLabel.isHidden = true;
-                self.authButton.isHidden = true;
-                self.yey.isHidden = false;
-            }
+            self.transitionToNext();
         });
     }
     

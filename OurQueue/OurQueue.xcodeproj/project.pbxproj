@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2535839B243ACDD300014BE5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535839A243ACDD300014BE5 /* StartView.swift */; };
+		25495633243C03B500530D2F /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25495632243C03B500530D2F /* BeginViewController.swift */; };
 		257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257332DC243879C100FDA145 /* SceneDelegate.swift */; };
 		257332E02439717100FDA145 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 257332DF2439717100FDA145 /* KeychainSwift */; };
 		25784537243AF43C00F29B52 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25784535243AF43500F29B52 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -17,12 +18,15 @@
 		25AB9B7E2432BC5A00AD83F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7D2432BC5A00AD83F6 /* Assets.xcassets */; };
 		25AB9B812432BC5A00AD83F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7F2432BC5A00AD83F6 /* LaunchScreen.storyboard */; };
 		25AB9B9B2432FD7800AD83F6 /* SpotifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B9A2432FD7800AD83F6 /* SpotifyModel.swift */; };
+		25B9BBC7243C49C800A80A7A /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9BBC6243C49C800A80A7A /* JoinVC.swift */; };
+		25B9BBC9243C49D700A80A7A /* CreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B9BBC8243C49D700A80A7A /* CreateVC.swift */; };
 		79C4921B21EE8485B4D2E4EF /* libPods-OurQueue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 872CFC9BA33F75B082B4236D /* libPods-OurQueue.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13DD8A7DBD69FD633758D978 /* Pods-OurQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurQueue.debug.xcconfig"; path = "Target Support Files/Pods-OurQueue/Pods-OurQueue.debug.xcconfig"; sourceTree = "<group>"; };
 		2535839A243ACDD300014BE5 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		25495632243C03B500530D2F /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		257332DC243879C100FDA145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		25784535243AF43500F29B52 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		25AB9B712432BC5800AD83F6 /* OurQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +38,8 @@
 		25AB9B822432BC5A00AD83F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AB9B8F2432C47200AD83F6 /* OurQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OurQueue-Bridging-Header.h"; sourceTree = "<group>"; };
 		25AB9B9A2432FD7800AD83F6 /* SpotifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyModel.swift; sourceTree = "<group>"; };
+		25B9BBC6243C49C800A80A7A /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		25B9BBC8243C49D700A80A7A /* CreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVC.swift; sourceTree = "<group>"; };
 		872CFC9BA33F75B082B4236D /* libPods-OurQueue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OurQueue.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A12DDE91DB2F2C25EF3FCD /* Pods-OurQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurQueue.release.xcconfig"; path = "Target Support Files/Pods-OurQueue/Pods-OurQueue.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,11 +84,14 @@
 				257332DC243879C100FDA145 /* SceneDelegate.swift */,
 				25AB9B742432BC5800AD83F6 /* AppDelegate.swift */,
 				25AB9B782432BC5800AD83F6 /* ViewController.swift */,
+				25495632243C03B500530D2F /* BeginViewController.swift */,
 				25AB9B7A2432BC5800AD83F6 /* Main.storyboard */,
 				25AB9B7D2432BC5A00AD83F6 /* Assets.xcassets */,
 				25AB9B7F2432BC5A00AD83F6 /* LaunchScreen.storyboard */,
 				25AB9B822432BC5A00AD83F6 /* Info.plist */,
 				2535839A243ACDD300014BE5 /* StartView.swift */,
+				25B9BBC6243C49C800A80A7A /* JoinVC.swift */,
+				25B9BBC8243C49D700A80A7A /* CreateVC.swift */,
 			);
 			path = OurQueue;
 			sourceTree = "<group>";
@@ -208,10 +217,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25495633243C03B500530D2F /* BeginViewController.swift in Sources */,
+				25B9BBC7243C49C800A80A7A /* JoinVC.swift in Sources */,
 				25AB9B9B2432FD7800AD83F6 /* SpotifyModel.swift in Sources */,
 				2535839B243ACDD300014BE5 /* StartView.swift in Sources */,
 				25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */,
 				25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */,
+				25B9BBC9243C49D700A80A7A /* CreateVC.swift in Sources */,
 				257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
