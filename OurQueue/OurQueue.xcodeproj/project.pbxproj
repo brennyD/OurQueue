@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2526B429243D1E6A001222C8 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B428243D1E6A001222C8 /* MainNavVC.swift */; };
+		2526B42B243D4DA4001222C8 /* HostMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B42A243D4DA4001222C8 /* HostMC.swift */; };
+		2526B42D243D586B001222C8 /* SessionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B42C243D586B001222C8 /* SessionTable.swift */; };
+		2526B42F243D90C0001222C8 /* ClientMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B42E243D90C0001222C8 /* ClientMC.swift */; };
 		2535839B243ACDD300014BE5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535839A243ACDD300014BE5 /* StartView.swift */; };
 		25495633243C03B500530D2F /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25495632243C03B500530D2F /* BeginViewController.swift */; };
 		257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257332DC243879C100FDA145 /* SceneDelegate.swift */; };
 		257332E02439717100FDA145 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 257332DF2439717100FDA145 /* KeychainSwift */; };
 		25784537243AF43C00F29B52 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25784535243AF43500F29B52 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		2591B9F0243EB0A000DD7ECE /* HostInSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */; };
 		25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B742432BC5800AD83F6 /* AppDelegate.swift */; };
 		25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B782432BC5800AD83F6 /* ViewController.swift */; };
 		25AB9B7C2432BC5800AD83F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7A2432BC5800AD83F6 /* Main.storyboard */; };
@@ -25,10 +30,15 @@
 
 /* Begin PBXFileReference section */
 		13DD8A7DBD69FD633758D978 /* Pods-OurQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurQueue.debug.xcconfig"; path = "Target Support Files/Pods-OurQueue/Pods-OurQueue.debug.xcconfig"; sourceTree = "<group>"; };
+		2526B428243D1E6A001222C8 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
+		2526B42A243D4DA4001222C8 /* HostMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMC.swift; sourceTree = "<group>"; };
+		2526B42C243D586B001222C8 /* SessionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTable.swift; sourceTree = "<group>"; };
+		2526B42E243D90C0001222C8 /* ClientMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMC.swift; sourceTree = "<group>"; };
 		2535839A243ACDD300014BE5 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		25495632243C03B500530D2F /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		257332DC243879C100FDA145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		25784535243AF43500F29B52 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
+		2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostInSessionVC.swift; sourceTree = "<group>"; };
 		25AB9B712432BC5800AD83F6 /* OurQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AB9B742432BC5800AD83F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25AB9B782432BC5800AD83F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +102,11 @@
 				2535839A243ACDD300014BE5 /* StartView.swift */,
 				25B9BBC6243C49C800A80A7A /* JoinVC.swift */,
 				25B9BBC8243C49D700A80A7A /* CreateVC.swift */,
+				2526B428243D1E6A001222C8 /* MainNavVC.swift */,
+				2526B42C243D586B001222C8 /* SessionTable.swift */,
+				2526B42A243D4DA4001222C8 /* HostMC.swift */,
+				2526B42E243D90C0001222C8 /* ClientMC.swift */,
+				2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */,
 			);
 			path = OurQueue;
 			sourceTree = "<group>";
@@ -224,7 +239,12 @@
 				25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */,
 				25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */,
 				25B9BBC9243C49D700A80A7A /* CreateVC.swift in Sources */,
+				2526B42B243D4DA4001222C8 /* HostMC.swift in Sources */,
 				257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */,
+				2591B9F0243EB0A000DD7ECE /* HostInSessionVC.swift in Sources */,
+				2526B429243D1E6A001222C8 /* MainNavVC.swift in Sources */,
+				2526B42D243D586B001222C8 /* SessionTable.swift in Sources */,
+				2526B42F243D90C0001222C8 /* ClientMC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

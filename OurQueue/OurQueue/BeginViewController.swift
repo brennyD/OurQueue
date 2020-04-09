@@ -13,7 +13,7 @@ import Foundation
 class BeginViewController: UIViewController {
     
     @IBOutlet weak var beginView: StartView!
-    var model:SpotifyModel! = nil;
+    lazy var model = (self.navigationController as! MainNavVC).model;
     
     @IBOutlet weak var hostButton: UIButton!
     
@@ -23,6 +23,8 @@ class BeginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        hostButton.titleLabel?.adjustsFontSizeToFitWidth = true;
+        joinButton.titleLabel?.adjustsFontSizeToFitWidth = true;
         createButton(hostButton);
         createButton(joinButton);
         beginView.addSlideInStep(hostButton);
@@ -54,14 +56,13 @@ class BeginViewController: UIViewController {
     
     
     @IBAction func hostPressed(_ sender: UIButton) {
-        
-        let _ = storyBoard.instantiateViewController(withIdentifier: "BeginViewControl") as! BeginViewController;
-        performSegue(withIdentifier: "goToHost", sender: nil)
+        let nvc = storyBoard.instantiateViewController(withIdentifier: "createVC") as! CreateVC;
+        self.navigationController?.pushViewController(nvc, animated: true)
     }
     
     @IBAction func joinPressed(_ sender: UIButton) {
-        let _ = storyBoard.instantiateViewController(withIdentifier: "BeginViewControl") as! BeginViewController;
-        performSegue(withIdentifier: "goToJoin", sender: nil)
+        let nvc = storyBoard.instantiateViewController(withIdentifier: "joinVC") as! JoinVC;
+        self.navigationController?.pushViewController(nvc, animated: true)
     }
     
     

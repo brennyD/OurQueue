@@ -11,13 +11,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    lazy var rootVC = self.window?.rootViewController as! ViewController;
+    lazy var rootVC = self.window?.rootViewController;
     var appDelegate = UIApplication.shared;
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        let url = URLContexts.first!
-        let options:[UIApplication.OpenURLOptionsKey: Any] = [:]
-        
-        rootVC.model.spotManager.application(appDelegate, open: url.url, options: options);
+        if let vc = rootVC as? ViewController{
+            let url = URLContexts.first!
+            let options:[UIApplication.OpenURLOptionsKey: Any] = [:]
+            vc.model.spotManager.application(appDelegate, open: url.url, options: options);
+        }
     }
     
     
@@ -51,10 +52,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     
-    func didLogin(vc: UIViewController) {
-            let nav = UINavigationController(rootViewController: vc)
-            nav.navigationBar.isHidden = true
-            self.window?.rootViewController = nav
+    func didLogin(vc: MainNavVC, model: SpotifyModel) {
+        vc.navigationBar.isHidden = true
+        vc.model = model;
+        self.window?.rootViewController = vc
         UIView.transition(with: self.window!, duration: 0.0, options: [], animations: {}, completion: nil)
     }
     

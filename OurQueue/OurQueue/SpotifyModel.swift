@@ -36,6 +36,11 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     }();
     
     
+    lazy var appRemote: SPTAppRemote = {
+        var ret = SPTAppRemote(configuration: self.configuration, logLevel: .debug);
+        return ret;
+    }();
+    
     lazy var spotManager:SPTSessionManager = {
         let manager = SPTSessionManager(configuration: configuration, delegate: self);
         //MUST BE REMOVED IN PROD
@@ -67,6 +72,9 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     }
     
     
+    func isAppInstalled() -> Bool {
+        return spotManager.isSpotifyAppInstalled;
+    }
     
     func searchForTracks(search: String) {
         checkExpiration();
@@ -101,25 +109,21 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
         request.httpBody = jsonData;
         
-        //let semaphore = DispatchSemaphore(value: 0);
-        
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             guard let data = data, error == nil else {
                 print("URL Call failed with \(error?.localizedDescription ?? "No data")");
-                //semaphore.signal();
                 return;
             }
             let body = try? JSONSerialization.jsonObject(with: data, options: []);
             if let response = body as? [String: Any] {
                 Spartan.authorizationToken = response["access_token"] as? String;
+                self.appRemote.connectionParameters.accessToken = response["access_token"] as? String;
                 self.expiration = Date(timeInterval: TimeInterval(response["expires_in"] as! Int), since: Date());
                 complete?();
             }
-            //semaphore.signal();
         }
         task.resume();
-        //_ = semaphore.wait(timeout: .distantFuture);
     }
     
     
@@ -139,6 +143,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     
     }
     
+    
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("Connection lost with Error:\n\(error?.localizedDescription ?? "None")")
     }
@@ -157,6 +162,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         print("Succesfully initiated session with Expiration \(manager.session!.expirationDate)");
         expiration = manager.session!.expirationDate;
         Spartan.authorizationToken = session.accessToken;
+        appRemote.connectionParameters.accessToken = session.accessToken;
         completionFunction?();
         if(!keychain.set(session.refreshToken, forKey: refreshKey)){
             print("Failed to store refresh token");

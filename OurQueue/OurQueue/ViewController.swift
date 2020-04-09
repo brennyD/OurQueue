@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         
         if(model.needsAppAuthorization()) {
         buffering.isHidden = true;
-        start.colorGradientAnimation(authButton);
         authButton.contentEdgeInsets = UIEdgeInsets(top: 11.75, left: 32.0, bottom: 11.75, right:32.0);
         authButton.layer.cornerRadius = 20;
         authButton.translatesAutoresizingMaskIntoConstraints = false;
@@ -47,6 +46,15 @@ class ViewController: UIViewController {
         connectLabel.attributedText = attString;
         start.addSlideInStep(connectLabel);
         start.addSlideInStep(authButton);
+            
+        if(!model.isAppInstalled()) {
+            authButton.isHidden = true;
+            connectLabel.text = "The Spoify app must be installed to use OurQueue\nCome back when it is!";
+        } else {
+            start.colorGradientAnimation(authButton);
+        }
+            
+            
         start.slideIn();
         } else {
             connectLabel.isHidden = true;
@@ -55,15 +63,33 @@ class ViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        transitionToNext();
+        /*if(model.needsAppAuthorization()) {
+            buffering.isHidden = true;
+            if(!model.isAppInstalled()) {
+                authButton.isHidden = true;
+                connectLabel.text = "The Spoify app must be installed to use OurQueue\nCome back when it is!";
+            } else {
+                start.colorGradientAnimation(authButton);
+            }
+        } else {
+            connectLabel.isHidden = true;
+            authButton.isHidden = true;
+            model.beginSession(complete: transitionToNext);
+        }*/
+    }
+    
     
     
     func transitionToNext(){
         DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "BeginViewControl") as! BeginViewController;
-            let sd = self.view.window?.windowScene?.delegate as! SceneDelegate;
-            sd.didLogin(vc: newViewController);
-            newViewController.model = self.model;
+            if let sd = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "navBase") as! MainNavVC;
+
+                sd.didLogin(vc: newViewController, model: self.model);
+            }
             
         }
     }

@@ -35,7 +35,7 @@ class StartView: UIView{
             f.alpha = 0.0;
             f.frame.origin = CGPoint(x: origin.x, y: origin.y+500);
             
-            UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseInOut], animations: {
+            UIView.animate(withDuration: duration, delay: delay, options: [.curveEaseInOut, .allowUserInteraction], animations: {
                 f.alpha = 1.0;
                 f.frame.origin = origin;
             });
