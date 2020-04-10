@@ -25,10 +25,11 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     private let endURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/endHostSession";
     private var addFunc: ((MCPeerID) -> ())?;
     private var removeFunc: ((MCPeerID) -> ())?;
+    var canStart: ((MCPeerID?) -> ())?;
     
     init(name: String, token: String, addHandler: ((MCPeerID) -> ())?, removeHandler: ((MCPeerID) -> ())?){
         browser = MCNearbyServiceBrowser(peer: MCPeerID(displayName: name), serviceType: serviceType);
-        sesh = MCSession(peer: browser.myPeerID, securityIdentity: nil, encryptionPreference: .none);
+        sesh = MCSession(peer: browser.myPeerID, securityIdentity: nil, encryptionPreference: .required);
         currentAccessToken = token;
         addFunc = addHandler;
         removeFunc = removeHandler;
@@ -138,7 +139,7 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
                 print("URL Call failed with \(error?.localizedDescription ?? "No data")");
                 return;
             }
-            print("Session \(self.sessionID!) ended");
+            print("Session \(self.sessionID ?? "uh oh") ended");
             self.sessionID = nil;
             self.clientTokens = [];
             self.hostToken = nil;
@@ -155,6 +156,7 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        print("Lost \(peerID.displayName)");
         if let index = avaliablePeers.firstIndex(of: peerID){
             print("Peer \(peerID.displayName) lost");
             avaliablePeers.remove(at: index);
@@ -180,6 +182,7 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
                 }
             } else {
                 clientTokens.append(msg);
+                canStart?(peerID);
             }
         }
     }

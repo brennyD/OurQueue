@@ -13,12 +13,20 @@ import Foundation
 class HostInSessionVC: UIViewController {
     lazy var model:SpotifyModel! = (self.navigationController as! MainNavVC).model;
     var hostSesh:HostMC! = nil;
-    
+    var host:String!;
+    var id:String!;
     @IBOutlet weak var jamTitle: UILabel!
     
     @IBOutlet weak var endButton: UIButton!
     
     @IBOutlet weak var jamSubtitle: UILabel!
+    
+    @IBOutlet weak var mainView: StartView!
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -29,11 +37,34 @@ class HostInSessionVC: UIViewController {
         endButton.translatesAutoresizingMaskIntoConstraints = false;
         endButton.titleLabel?.adjustsFontSizeToFitWidth = true;
         endButton.titleLabel?.lineBreakMode = .byWordWrapping;
+        mainView.colorGradientAnimation(endButton);
+        NotificationCenter.default.addObserver(self, selector: #selector(HostInSessionVC.endSession(notification:)), name: UIApplication.willTerminateNotification, object: UIApplication.shared)
+        host = hostSesh.getHostToken();
+        id = hostSesh.sessionID;
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        model.appRemote.authorizeAndPlayURI("");
+    
+    @objc func endSession(notification: Notification? = nil){
+        print("please bro");
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        model.appRemote.authorizeAndPlayURI("");
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated);
+    }
+    
+    
+    @IBAction func endPressed(_ sender: Any) {
+        hostSesh.endSession();
+        navigationController?.popToRootViewController(animated: true);
+    }
+    
     
     
 }

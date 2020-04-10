@@ -35,6 +35,7 @@ class CreateVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        startButton.isHidden = true;
         startButton.contentEdgeInsets = UIEdgeInsets(top: 11.75, left: 32.0, bottom: 11.75, right:32.0);
         startButton.layer.cornerRadius = 20;
         startButton.translatesAutoresizingMaskIntoConstraints = false;
@@ -48,16 +49,29 @@ class CreateVC: UIViewController {
         alert.addTextField(configurationHandler: {text in
             text.autocapitalizationType = .sentences;
             text.keyboardAppearance = .dark;
-            text.autocorrectionType = .default;
+            text.keyboardType = .alphabet;
             field = text;
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {alert in self.navigationController?.popViewController(animated: true)}));
         alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: {alert in
             self.displayName = field.text
             self.hostSesh = HostMC(name: self.displayName, token: self.spotModel.appRemote.connectionParameters.accessToken!, addHandler:self.addPeer, removeHandler: self.removePeer);
+            self.hostSesh.canStart = self.enableStart;
             self.hostSesh.openInvite();
         }));
+        
+        
     }
+    
+    
+    
+    func enableStart(_ peer: MCPeerID?){
+        DispatchQueue.main.async {
+            self.startButton.isHidden = false;
+            self.invTable.peerAccepted(peer!);
+        }
+    }
+    
     
     func addPeer(_ peer: MCPeerID){
         DispatchQueue.main.async {
@@ -83,6 +97,8 @@ class CreateVC: UIViewController {
     
     @IBAction func beginPressed(_ sender: Any) {
         hostSesh.closeAndBegin(complete: transitiontoSession)
+        startButton.isEnabled = false;
+        startButton.titleLabel?.textColor = UIColor.gray;
     }
     
     

@@ -15,15 +15,17 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
     private var sessionID: String?;
     private var hostName: String?
     private var peer: MCPeerID;
+    private var hostPeer: MCPeerID!;
     private var advertiser:MCNearbyServiceAdvertiser;
     private let serviceType = "oq-session";
     private let sesh:MCSession;
     private var addFunc: ((MCPeerID, ((Bool) -> ())?) -> ())?;
+    private var startFunc: (() -> ())
     
-    init(name: String, addHandler: ((MCPeerID, ((Bool) -> ())?) -> ())?){
+    init(name: String, addHandler: ((MCPeerID, ((Bool) -> ())?) -> ())?, transitionHandler: @escaping (() -> ())){
         peer = MCPeerID(displayName: name);
-        sesh = MCSession(peer: peer, securityIdentity: nil, encryptionPreference: .none);
-        
+        sesh = MCSession(peer: peer, securityIdentity: nil, encryptionPreference: .required);
+        startFunc = transitionHandler;
         addFunc = addHandler;
         advertiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: ["sericeType": serviceType], serviceType: serviceType);
         super.init();
@@ -63,24 +65,30 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         if(state == .connected){
         print("Connected to \(peerID.displayName)");
-        do {
-        try session.send(self.clientToken!.data(using: .utf8)!, toPeers: [peerID], with: .reliable);
-            
-        } catch let error{
-            print(error)
-        }
+            do {
+            if(self.hostPeer == nil){
+                self.hostPeer = peerID;
+            }
+            try session.send(self.clientToken!.data(using: .utf8)!, toPeers: [peerID], with: .reliable);
+                
+            } catch let error{
+                print(error)
+            }
         }
        }
        
        func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         if let msg = String(data: data, encoding: .utf8) {
-            if(msg == "You've been kicked dummy!") {
-                session.disconnect();
-            } else {
-                sessionID = msg;
-                print(sessionID!);
-                self.advertiser.stopAdvertisingPeer();
-                try? self.sesh.send("ID received".data(using: .utf8)!, toPeers: [peerID], with: .reliable);
+            if(peerID == self.hostPeer){
+                if(msg == "You've been kicked dummy!") {
+                    session.disconnect();
+                } else {
+                    sessionID = msg;
+                    print(sessionID!);
+                    self.advertiser.stopAdvertisingPeer();
+                    try? self.sesh.send("ID received".data(using: .utf8)!, toPeers: [peerID], with: .reliable);
+                    startFunc();
+                }
             }
         }
        }
