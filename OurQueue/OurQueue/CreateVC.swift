@@ -40,7 +40,6 @@ class CreateVC: UIViewController {
         startButton.layer.cornerRadius = 20;
         startButton.translatesAutoresizingMaskIntoConstraints = false;
         startButton.titleLabel?.adjustsFontSizeToFitWidth = true;
-        startButton.titleLabel?.lineBreakMode = .byWordWrapping;
         subtitle.text = "you can invite friends who are nearby\n(or on the same Wifi network)"
         subtitle.adjustsFontSizeToFitWidth = true;
         inviteTitle.adjustsFontSizeToFitWidth = true;
@@ -55,7 +54,7 @@ class CreateVC: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {alert in self.navigationController?.popViewController(animated: true)}));
         alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: {alert in
             self.displayName = field.text
-            self.hostSesh = HostMC(name: self.displayName, token: self.spotModel.appRemote.connectionParameters.accessToken!, addHandler:self.addPeer, removeHandler: self.removePeer);
+            self.hostSesh = HostMC(name: self.displayName, token: self.spotModel.appRemote.connectionParameters.accessToken!, addHandler:self.addPeer, removeHandler: self.removePeer, tokenExp: self.spotModel.expiration!);
             self.hostSesh.canStart = self.enableStart;
             self.hostSesh.openInvite();
         }));

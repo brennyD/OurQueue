@@ -18,6 +18,8 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
     private var hostPeer: MCPeerID!;
     private var advertiser:MCNearbyServiceAdvertiser;
     private let serviceType = "oq-session";
+    private let URI_PREFIX = "spotify:track:";
+    private let queueURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/queueSong";
     private let sesh:MCSession;
     private var addFunc: ((MCPeerID, ((Bool) -> ())?) -> ())?;
     private var startFunc: (() -> ())
@@ -43,6 +45,32 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
         hostName = nil;
         sessionID = nil;
     }
+    
+    
+    func queueSong(trackURI: String){
+        let trackURI = URI_PREFIX+trackURI;
+        let url = URL(string: queueURL)!;
+        var request = URLRequest(url: url);
+        request.httpMethod = "POST";
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json:[String: Any] = ["sessionID": self.sessionID!, "trackURI":trackURI, "member":self.clientToken!];
+        let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
+        request.httpBody = jsonData;
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, error in
+            guard let data = data, error == nil else {
+                print("URL Call failed with \(error?.localizedDescription ?? "No data")");
+                return;
+            }
+            let body = try? JSONSerialization.jsonObject(with: data, options: []);
+            if let _ = body as? [String: Any] {
+                print("Yes?");
+            }
+        }
+        task.resume();
+    }
+    
+    
     
     private func createToken(){
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

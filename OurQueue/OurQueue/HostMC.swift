@@ -26,13 +26,15 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     private var addFunc: ((MCPeerID) -> ())?;
     private var removeFunc: ((MCPeerID) -> ())?;
     var canStart: ((MCPeerID?) -> ())?;
+    var tokExp: Double;
     
-    init(name: String, token: String, addHandler: ((MCPeerID) -> ())?, removeHandler: ((MCPeerID) -> ())?){
+    init(name: String, token: String, addHandler: ((MCPeerID) -> ())?, removeHandler: ((MCPeerID) -> ())?, tokenExp: Date){
         browser = MCNearbyServiceBrowser(peer: MCPeerID(displayName: name), serviceType: serviceType);
         sesh = MCSession(peer: browser.myPeerID, securityIdentity: nil, encryptionPreference: .required);
         currentAccessToken = token;
         addFunc = addHandler;
         removeFunc = removeHandler;
+        tokExp = tokenExp.timeIntervalSince1970*1000;
         super.init();
         browser.delegate = self;
         sesh.delegate = self;
@@ -77,7 +79,7 @@ class HostMC: NSObject, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
         var request = URLRequest(url: url);
         request.httpMethod = "POST";
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let json:[String: Any] = ["rtoken": key, "host":hostToken!, "members":clientTokens, "token":currentAccessToken];
+        let json:[String: Any] = ["rtoken": key, "host":hostToken!, "members":clientTokens, "token":currentAccessToken, "tok_exp":self.tokExp];
         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed);
         request.httpBody = jsonData;
         let task = URLSession.shared.dataTask(with: request) {

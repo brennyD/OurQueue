@@ -49,6 +49,7 @@ class ViewController: UIViewController {
             
         if(!model.isAppInstalled()) {
             authButton.isHidden = true;
+            connectLabel.adjustsFontSizeToFitWidth = true;
             connectLabel.text = "The Spoify app must be installed to use OurQueue\nCome back when it is!";
         } else {
             start.colorGradientAnimation(authButton);
@@ -59,16 +60,18 @@ class ViewController: UIViewController {
         } else {
             connectLabel.isHidden = true;
             authButton.isHidden = true;
+            buffering.isHidden = false;
             model.beginSession(complete: transitionToNext);
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        transitionToNext();
-        /*if(model.needsAppAuthorization()) {
+        //transitionToNext();
+        if(model.needsAppAuthorization()) {
             buffering.isHidden = true;
             if(!model.isAppInstalled()) {
                 authButton.isHidden = true;
+                connectLabel.adjustsFontSizeToFitWidth = true;
                 connectLabel.text = "The Spoify app must be installed to use OurQueue\nCome back when it is!";
             } else {
                 start.colorGradientAnimation(authButton);
@@ -76,8 +79,9 @@ class ViewController: UIViewController {
         } else {
             connectLabel.isHidden = true;
             authButton.isHidden = true;
+            buffering.isHidden = false;
             model.beginSession(complete: transitionToNext);
-        }*/
+        }
     }
     
     

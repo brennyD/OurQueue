@@ -28,11 +28,13 @@ public class Track: SimplifiedTrack {
     public private(set) var album: SimplifiedAlbum!
     public private(set) var externalIds: [String: String]!
     public private(set) var popularity: Int!
+    public private(set) var spotifyID: String!;
     
     public override func mapping(map: Map) {
         super.mapping(map: map)
         album <- map["album"]
         externalIds <- map["external_ids"]
         popularity <- map["popularity"]
+        spotifyID <- map["id"]
     }
 }

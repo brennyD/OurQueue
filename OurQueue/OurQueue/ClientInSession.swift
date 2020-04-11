@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ClientInSession: UIViewController {
+class ClientInSession: UIViewController, UITextFieldDelegate {
     
     var clientSesh: ClientMC!;
     @IBOutlet weak var searchView: StartView!
@@ -19,10 +19,18 @@ class ClientInSession: UIViewController {
     
     @IBOutlet weak var leaveButton: StyledButton!
     
+    @IBOutlet weak var searchTable: SearchTable! {
+        didSet {
+            searchTable.dataSource = searchTable;
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        searchTable.action = self.queueSong;
+        searchField.delegate = self;
+        searchField.overrideUserInterfaceStyle = .light;
         
     }
     
@@ -30,5 +38,27 @@ class ClientInSession: UIViewController {
         clientSesh.stop();
         navigationController?.popToRootViewController(animated: true);
     }
+    
+    
+    @IBAction func searchEntered(_ sender: UITextField) {
+        if let text = sender.text {
+            print(text);
+            (navigationController as? MainNavVC)!.model.searchForTracks(search: text, handler: searchTable.updateResults);
+        }
+    }
+    
+    
+    func queueSong(trackID: String) {
+        print("Queuing \(trackID)");
+        clientSesh.queueSong(trackURI: trackID);
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return false;
+    }
+    
+    
+    
     
 }

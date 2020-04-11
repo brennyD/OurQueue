@@ -19,6 +19,7 @@
 		25784537243AF43C00F29B52 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25784535243AF43500F29B52 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		2591B9F0243EB0A000DD7ECE /* HostInSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */; };
 		259B50CA24402F5700297EF7 /* ClientInSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259B50C924402F5700297EF7 /* ClientInSession.swift */; };
+		25A5D9DD2440FED00098074E /* SearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A5D9DC2440FED00098074E /* SearchTable.swift */; };
 		25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B742432BC5800AD83F6 /* AppDelegate.swift */; };
 		25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB9B782432BC5800AD83F6 /* ViewController.swift */; };
 		25AB9B7C2432BC5800AD83F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25AB9B7A2432BC5800AD83F6 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		25784535243AF43500F29B52 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-master 2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostInSessionVC.swift; sourceTree = "<group>"; };
 		259B50C924402F5700297EF7 /* ClientInSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInSession.swift; sourceTree = "<group>"; };
+		25A5D9DC2440FED00098074E /* SearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTable.swift; sourceTree = "<group>"; };
 		25AB9B712432BC5800AD83F6 /* OurQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25AB9B742432BC5800AD83F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25AB9B782432BC5800AD83F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				2526B42E243D90C0001222C8 /* ClientMC.swift */,
 				2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */,
 				259B50C924402F5700297EF7 /* ClientInSession.swift */,
+				25A5D9DC2440FED00098074E /* SearchTable.swift */,
 			);
 			path = OurQueue;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				2526B42B243D4DA4001222C8 /* HostMC.swift in Sources */,
 				257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */,
 				2591B9F0243EB0A000DD7ECE /* HostInSessionVC.swift in Sources */,
+				25A5D9DD2440FED00098074E /* SearchTable.swift in Sources */,
 				2526B429243D1E6A001222C8 /* MainNavVC.swift in Sources */,
 				259B50CA24402F5700297EF7 /* ClientInSession.swift in Sources */,
 				2526B42D243D586B001222C8 /* SessionTable.swift in Sources */,

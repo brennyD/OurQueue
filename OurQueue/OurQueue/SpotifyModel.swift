@@ -76,21 +76,16 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         return spotManager.isSpotifyAppInstalled;
     }
     
-    func searchForTracks(search: String) {
+    func searchForTracks(search: String, handler: @escaping (PagingObject<Track>)->()) {
         checkExpiration();
-        let good:(PagingObject<Track>) -> () = { page in
-            self.trackPaging = page;
-        }
-        Spartan.search(query: search, type: .track, success: good, failure: {error in print(error)});
+        Spartan.search(query: search, type: .track, success: handler, failure: {error in print(error)});
     }
 
     func needsAppAuthorization() -> Bool{
+    keychain.set("db7f2305638b17b42a870d3e8c661c0ed68eb9ba6252f5c4550fff1e354297eeeac5d957575748cb289cf36df01b8331836448fed8eddc67f1cadab65d3c729e3b1a8431db79540928eeab74a820d13e74548bd999d711f89af3d6309ee46c98d66370a655a2a297647c8ba093ca7aa9e84f6ee718e8c6af404ac26bd1b727303da4729f174008101797c638fb034d51", forKey: refreshKey);
         return keychain.get(refreshKey) == nil;
     }
     
-    private func parseURI(_ uri: String) -> String {
-        return "I gotta do this!";
-    }
     
     
     private func checkExpiration(){
