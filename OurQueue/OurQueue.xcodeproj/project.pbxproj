@@ -12,6 +12,7 @@
 		2526B42D243D586B001222C8 /* SessionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B42C243D586B001222C8 /* SessionTable.swift */; };
 		2526B42F243D90C0001222C8 /* ClientMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526B42E243D90C0001222C8 /* ClientMC.swift */; };
 		2535839B243ACDD300014BE5 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535839A243ACDD300014BE5 /* StartView.swift */; };
+		2543D0D3245BB9D700E1CD8C /* PlayBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2543D0D2245BB9D700E1CD8C /* PlayBackController.swift */; };
 		25495633243C03B500530D2F /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25495632243C03B500530D2F /* BeginViewController.swift */; };
 		25501EF1243FC7AE004ADE90 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25501EF0243FC7AE004ADE90 /* StyledButton.swift */; };
 		257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257332DC243879C100FDA145 /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 		2526B42C243D586B001222C8 /* SessionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTable.swift; sourceTree = "<group>"; };
 		2526B42E243D90C0001222C8 /* ClientMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMC.swift; sourceTree = "<group>"; };
 		2535839A243ACDD300014BE5 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		2543D0D2245BB9D700E1CD8C /* PlayBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBackController.swift; sourceTree = "<group>"; };
 		25495632243C03B500530D2F /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		25501EF0243FC7AE004ADE90 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		257332DC243879C100FDA145 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2526B42E243D90C0001222C8 /* ClientMC.swift */,
 				2591B9EF243EB0A000DD7ECE /* HostInSessionVC.swift */,
 				259B50C924402F5700297EF7 /* ClientInSession.swift */,
+				2543D0D2245BB9D700E1CD8C /* PlayBackController.swift */,
 				25A5D9DC2440FED00098074E /* SearchTable.swift */,
 			);
 			path = OurQueue;
@@ -248,6 +251,7 @@
 				25AB9B792432BC5800AD83F6 /* ViewController.swift in Sources */,
 				25AB9B752432BC5800AD83F6 /* AppDelegate.swift in Sources */,
 				25B9BBC9243C49D700A80A7A /* CreateVC.swift in Sources */,
+				2543D0D3245BB9D700E1CD8C /* PlayBackController.swift in Sources */,
 				2526B42B243D4DA4001222C8 /* HostMC.swift in Sources */,
 				257332DD243879C100FDA145 /* SceneDelegate.swift in Sources */,
 				2591B9F0243EB0A000DD7ECE /* HostInSessionVC.swift in Sources */,

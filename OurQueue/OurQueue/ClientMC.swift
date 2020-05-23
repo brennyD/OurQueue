@@ -19,7 +19,7 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
     private var advertiser:MCNearbyServiceAdvertiser;
     private let serviceType = "oq-session";
     private let URI_PREFIX = "spotify:track:";
-    private let queueURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/queueSong";
+    private let queueURL = "spotify queue endpoint here";
     private let sesh:MCSession;
     private var addFunc: ((MCPeerID, ((Bool) -> ())?) -> ())?;
     private var startFunc: (() -> ())
@@ -62,9 +62,10 @@ class ClientMC: NSObject, MCNearbyServiceAdvertiserDelegate, MCSessionDelegate {
                 print("URL Call failed with \(error?.localizedDescription ?? "No data")");
                 return;
             }
+            print("Queued?");
             let body = try? JSONSerialization.jsonObject(with: data, options: []);
             if let _ = body as? [String: Any] {
-                print("Yes?");
+                
             }
         }
         task.resume();

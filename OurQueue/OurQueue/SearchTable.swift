@@ -28,8 +28,9 @@ class resultsCell: UITableViewCell {
     @IBAction func didPressQueue(_ sender: StyledButton) {
         
         queueAction?(self.trackID);
-        self.queueButton.titleLabel?.text = "Queued";
+        self.queueButton.setTitle("Queued", for: .normal);
         self.queueButton.backgroundColor = UIColor.red;
+        self.queueButton.isEnabled = false;
     }
     
     
@@ -68,6 +69,12 @@ class SearchTable: UITableView, UITableViewDataSource {
         self.reloadData();
     }
     
+    
+    func clearTable() {
+        results = [];
+        self.reloadData();
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results?.count ?? 0;
     }
@@ -76,8 +83,10 @@ class SearchTable: UITableView, UITableViewDataSource {
         let item = results![indexPath.row];
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! resultsCell;
         cell.tag = indexPath.row;
+        cell.queueButton.isHidden = false;
         cell.queueButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.7254901961, blue: 0.3294117647, alpha: 1);
-        cell.queueButton.titleLabel?.text = "Queue";
+        cell.queueButton.setTitle("Queue", for: .normal);
+        cell.queueButton.isEnabled = true;
         cell.trackArtist.text = item.artist;
         cell.trackTitle.text = item.title;
         cell.trackArt.contentMode = .scaleAspectFit;

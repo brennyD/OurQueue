@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ViewController: UIViewController {
     
@@ -24,19 +25,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //model.keychain.clear();
         start.addFadeInStep(mainTitle);
         start.addFadeInStep(subtitle);
         start.addFadeInStep(logo);
-        
+        connectLabel.adjustsFontSizeToFitWidth = true;
         if(model.needsAppAuthorization()) {
         buffering.isHidden = true;
         authButton.contentEdgeInsets = UIEdgeInsets(top: 11.75, left: 32.0, bottom: 11.75, right:32.0);
         authButton.layer.cornerRadius = 20;
         authButton.translatesAutoresizingMaskIntoConstraints = false;
         authButton.titleLabel?.adjustsFontSizeToFitWidth = true;
-        authButton.titleLabel?.lineBreakMode = .byWordWrapping;
         let font: UIFont? = UIFont(name: "Futura", size: 17);
         let superFont:UIFont? = UIFont(name: "Futura", size:7);
         let range = (connectLabel.text! as NSString).range(of: "TM");
@@ -61,12 +60,14 @@ class ViewController: UIViewController {
             connectLabel.isHidden = true;
             authButton.isHidden = true;
             buffering.isHidden = false;
-            model.beginSession(complete: transitionToNext);
+            //model.beginSession(complete: transitionToNext);
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         //transitionToNext();
+        
+        
         if(model.needsAppAuthorization()) {
             buffering.isHidden = true;
             if(!model.isAppInstalled()) {

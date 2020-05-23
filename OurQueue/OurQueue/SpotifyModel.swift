@@ -13,11 +13,11 @@ import Spartan
 class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
     
     
-    let SpotifyClientID = "f0ac9179e5474647a210ebf993c53306"; //ProcessInfo.processInfo.environment["CLIENT_ID"]!;
-    let SpotifyRedirectURL = URL(string:"OurQueue://spotify-login-callback");//URL(string: ProcessInfo.processInfo.environment["REDIRECT_URI"]!)!
-    let refreshKey = "com.Gizzard.refreshkey"//ProcessInfo.processInfo.environment["REFRESH_KEY"]!;
-    let refreshURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/refresh";
-    let swapURL = "https://us-central1-ourqueue-8223f.cloudfunctions.net/swap"
+    let SpotifyClientID = "Spotify app Client ID here"; //ProcessInfo.processInfo.environment["CLIENT_ID"]!;
+    let SpotifyRedirectURL = URL(string:"Spotify callback URL here");//URL(string: ProcessInfo.processInfo.environment["REDIRECT_URI"]!)!
+    let refreshKey = "refresh key here"//ProcessInfo.processInfo.environment["REFRESH_KEY"]!;
+    let refreshURL = "Spotify refresh url here";
+    let swapURL = "token swap url here"
     let keychain = KeychainSwift();
     var expiration: Date? = nil;
     var trackPaging: PagingObject<Track>? = nil;
@@ -49,7 +49,7 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
         }();
     
 
-    let scope:SPTScope = [.appRemoteControl, .streaming, .userModifyPlaybackState];
+    let scope:SPTScope = [.appRemoteControl, .streaming, .userModifyPlaybackState, .userReadCurrentlyPlaying];
     
     
     
@@ -82,7 +82,6 @@ class SpotifyModel: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDeleg
     }
 
     func needsAppAuthorization() -> Bool{
-    keychain.set("db7f2305638b17b42a870d3e8c661c0ed68eb9ba6252f5c4550fff1e354297eeeac5d957575748cb289cf36df01b8331836448fed8eddc67f1cadab65d3c729e3b1a8431db79540928eeab74a820d13e74548bd999d711f89af3d6309ee46c98d66370a655a2a297647c8ba093ca7aa9e84f6ee718e8c6af404ac26bd1b727303da4729f174008101797c638fb034d51", forKey: refreshKey);
         return keychain.get(refreshKey) == nil;
     }
     

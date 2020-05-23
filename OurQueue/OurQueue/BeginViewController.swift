@@ -50,7 +50,6 @@ class BeginViewController: UIViewController {
         button.layer.cornerRadius = 20;
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.titleLabel?.adjustsFontSizeToFitWidth = true;
-        button.titleLabel?.lineBreakMode = .byWordWrapping;
     }
     
     

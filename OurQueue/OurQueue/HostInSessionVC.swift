@@ -36,7 +36,6 @@ class HostInSessionVC: UIViewController {
         endButton.layer.cornerRadius = 20;
         endButton.translatesAutoresizingMaskIntoConstraints = false;
         endButton.titleLabel?.adjustsFontSizeToFitWidth = true;
-        endButton.titleLabel?.lineBreakMode = .byWordWrapping;
         mainView.colorGradientAnimation(endButton);
         NotificationCenter.default.addObserver(self, selector: #selector(HostInSessionVC.endSession(notification:)), name: UIApplication.willTerminateNotification, object: UIApplication.shared)
         host = hostSesh.getHostToken();

@@ -16,8 +16,11 @@ class ClientInSession: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var searchField: UITextField!
     
+    @IBOutlet weak var nowPlaying: UIButton!
     
     @IBOutlet weak var leaveButton: StyledButton!
+    
+    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     
     @IBOutlet weak var searchTable: SearchTable! {
         didSet {
@@ -31,6 +34,9 @@ class ClientInSession: UIViewController, UITextFieldDelegate {
         searchTable.action = self.queueSong;
         searchField.delegate = self;
         searchField.overrideUserInterfaceStyle = .light;
+        searchField.clearButtonMode = .always;
+        searchField.returnKeyType = .search;
+        nowPlaying.titleLabel?.adjustsFontSizeToFitWidth = true;
         
     }
     
@@ -58,6 +64,16 @@ class ClientInSession: UIViewController, UITextFieldDelegate {
         return false;
     }
     
+    
+    
+    @IBAction func goToPlayback(_ sender: UIButton) {
+        
+        DispatchQueue.main.async {
+            let pbvc = self.storyBoard.instantiateViewController(withIdentifier: "playbackController") as! PlayBackController;
+            pbvc.clientSesh = self.clientSesh;
+            self.navigationController?.pushViewController(pbvc, animated: true)
+        }
+    }
     
     
     

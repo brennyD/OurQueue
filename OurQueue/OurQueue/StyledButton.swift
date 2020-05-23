@@ -18,7 +18,6 @@ class StyledButton: UIButton {
         self.layer.cornerRadius = 20;
         self.translatesAutoresizingMaskIntoConstraints = false;
         self.titleLabel?.adjustsFontSizeToFitWidth = true;
-        self.titleLabel?.lineBreakMode = .byWordWrapping;
     }
     
     required init?(coder: NSCoder) {
