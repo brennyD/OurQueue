@@ -4,7 +4,7 @@ A common problem many have while on long road trips or during parties is the con
 
 Phones connect to eachother using Multipeer Connectivity, which is a peer-to-peer network library that uses wifi and bluetooth. Session information is then stored in a Firebase database, and queueing and authorization functions are stored as firebase cloud functions, which communicate with the Spotify web API. All user data present in the database is deleted permanently once the listening session is over, complying with the Spotify Terms of Service.
 
-Eventually, I was planning on ironing this app out completely and publishing it to the app store, however recently (like, last week recently) Spotify introduced their Group DJ feature, which makes this app completely obsolete (bummer!). So I decided to make it's source code public, but the firebase backend and Spotify app data has since been deleted making the app non-functional. 
+Eventually, I was planning on ironing this app out completely and publishing it to the app store, however recently (like, last week recently) Spotify introduced their Group DJ feature, which makes this app completely obsolete (bummer!). So I decided to make its source code public, but the firebase backend and Spotify app data has since been deleted making the app non-functional. 
 
 Here is a demo video of how the app worked in its current form:
 
